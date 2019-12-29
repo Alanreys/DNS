@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class ProductsHierarchy : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Product")
-        {
-            collision.transform.parent = this.gameObject.transform;
-        }
-    }
+    bool HaveChild = false;
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Product")
+        if (collision.gameObject.GetComponent<Rigidbody>().useGravity)
         {
-            collision.gameObject.transform.parent = null;
+            if (collision.gameObject.tag == "Product")
+            {
+                collision.transform.parent = this.gameObject.transform;
+            }
         }
     }
 }

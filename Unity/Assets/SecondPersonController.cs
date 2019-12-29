@@ -28,7 +28,7 @@ public class SecondPersonController : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 0, 0);
 
-            if (Input.GetMouseButtonDown(2)) tr.localRotation = Quaternion.Euler(tr.localEulerAngles.x, 0, 0);
+            if (Input.GetMouseButtonDown(2)) tr.localRotation = Quaternion.Euler(0, 0, 0);
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0) tr.eulerAngles += new Vector3(90, 0, 0);
             else if (Input.GetAxis("Mouse ScrollWheel") < 0) tr.eulerAngles -= new Vector3(90, 0, 0);
