@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
-public class fill_vodoley_face : MonoBehaviour
+public class FillVodoleyFace : MonoBehaviour
 {
     public GameObject top_main_item;
     public bool create_top_array;
@@ -22,8 +20,8 @@ public class fill_vodoley_face : MonoBehaviour
     public float position_bottom_x = 0;
     public bool clear_items;
 
-    private float left_edge = 0.3f;
-    private float right_edge = -0.3f;
+    float left_edge = 0.33f;
+    float right_edge = -0.27f;
 
     private void Update()
     {
@@ -64,7 +62,7 @@ public class fill_vodoley_face : MonoBehaviour
                 top_shelf_obj[i] = Instantiate(top_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 top_shelf_obj[i].transform.parent = this.gameObject.transform;
                 top_shelf_obj[i].transform.localEulerAngles = new Vector3(0, 90, 90);
-                top_shelf_obj[i].transform.localPosition = new Vector3(position_top_x, left_edge - center, 0.275f);      
+                top_shelf_obj[i].transform.localPosition = new Vector3(position_top_x, left_edge - center, 0.275f);
             }
             center += step;
         }    
