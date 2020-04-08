@@ -4,11 +4,23 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 public class fill_vodoley_face : MonoBehaviour
-{ 
+{
+    public GameObject top_main_item;
+    public bool create_top_array;
     public GameObject[] top_shelf;
+    GameObject[] top_shelf_obj;
     public bool fill_top;
+    [Range(-0.1f, 0.1f)]
+    public float position_top_x = 0;
+
+    public GameObject bottom_main_item;
+    public bool create_bottom_array;
     public GameObject[] bottom_shelf;
+    GameObject[] bottom_shelf_obj;
     public bool fill_bottom;
+    [Range(-0.1f, 0.1f)]
+    public float position_bottom_x = 0;
+    public bool clear_items;
 
     private float left_edge = 0.3f;
     private float right_edge = -0.3f;
@@ -23,6 +35,18 @@ public class fill_vodoley_face : MonoBehaviour
         {
             filling_bottom();
         }
+        if (create_top_array)
+        {
+            create_top();
+        }
+        if (create_bottom_array)
+        {
+            create_bottom();
+        }
+        if (clear_items)
+        {
+            clearing_items();
+        }
     }
 
     private void filling_top()
@@ -32,7 +56,7 @@ public class fill_vodoley_face : MonoBehaviour
         float step = width / (top_shelf.Length+1);
         float center = step;
 
-        GameObject[] top_shelf_obj = new GameObject[top_shelf.Length];
+        top_shelf_obj = new GameObject[top_shelf.Length];
         for (int i = 0; i < top_shelf.Length; i++)
         {
             if (top_shelf[i] != null)
@@ -40,7 +64,7 @@ public class fill_vodoley_face : MonoBehaviour
                 top_shelf_obj[i] = Instantiate(top_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 top_shelf_obj[i].transform.parent = this.gameObject.transform;
                 top_shelf_obj[i].transform.localEulerAngles = new Vector3(0, 90, 90);
-                top_shelf_obj[i].transform.localPosition = new Vector3(0, left_edge - center, 0.275f);      
+                top_shelf_obj[i].transform.localPosition = new Vector3(position_top_x, left_edge - center, 0.275f);      
             }
             center += step;
         }    
@@ -52,7 +76,7 @@ public class fill_vodoley_face : MonoBehaviour
         float step = width / (bottom_shelf.Length + 1);
         float center = step;
 
-        GameObject[] bottom_shelf_obj = new GameObject[bottom_shelf.Length];
+        bottom_shelf_obj = new GameObject[bottom_shelf.Length];
         for (int i = 0; i < bottom_shelf.Length; i++)
         {
             if (bottom_shelf[i] != null)
@@ -60,9 +84,35 @@ public class fill_vodoley_face : MonoBehaviour
                 bottom_shelf_obj[i] = Instantiate(bottom_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 bottom_shelf_obj[i].transform.parent = this.gameObject.transform;
                 bottom_shelf_obj[i].transform.localEulerAngles = new Vector3(0, 90, 90);
-                bottom_shelf_obj[i].transform.localPosition = new Vector3(0, left_edge - center, -0.16f);
+                bottom_shelf_obj[i].transform.localPosition = new Vector3(position_bottom_x, left_edge - center, -0.16f);
             }
             center += step;
+        }
+    }
+
+    private void create_top()
+    {
+        create_top_array = false;
+        for (int i = 0; i < top_shelf.Length; i++)
+        {
+            top_shelf[i] = top_main_item;
+        }
+    }
+    private void create_bottom()
+    {
+        create_bottom_array = false;
+        for (int i = 0; i < bottom_shelf.Length; i++)
+        {
+            bottom_shelf[i] = bottom_main_item;
+        }
+    }
+
+    private void clearing_items()
+    {
+        clear_items = false;
+        for (int i = this.transform.childCount-1; i > 2; i--)
+        {
+            DestroyImmediate(transform.GetChild(i).gameObject);
         }
     }
 }

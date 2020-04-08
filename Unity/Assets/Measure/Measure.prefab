@@ -230,6 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7699290575811897609}
   - component: {fileID: 5914200730193264525}
+  - component: {fileID: 2817349565081891528}
   m_Layer: 0
   m_Name: Measure
   m_TagString: Unknown
@@ -275,6 +276,21 @@ MonoBehaviour:
   textField: {fileID: 26621407121070076}
   textScale: 0.02
   canvas: {fileID: 26621406030332586}
+--- !u!114 &2817349565081891528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253343340722803076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264997c078eb43f47aeb5fccd5b17115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj1: {fileID: 0}
+  obj2: {fileID: 0}
+  calculation: 0
 --- !u!1 &1549502699450518630
 GameObject:
   m_ObjectHideFlags: 0
