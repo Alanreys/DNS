@@ -9,7 +9,7 @@ public class FillVodoleySmall1Sside : MonoBehaviour
     GameObject[] top_shelf_obj;
     public bool fill_top;
     [Range(0.0f, 0.2f)]
-    public float position_top_x = 0;
+    public float depth_top = 0;
 
     public GameObject bottom_main_item;
     public bool create_bottom_array;
@@ -17,7 +17,8 @@ public class FillVodoleySmall1Sside : MonoBehaviour
     GameObject[] bottom_shelf_obj;
     public bool fill_bottom;
     [Range(-0.1f, 0.2f)]
-    public float position_bottom_x = -0.1f;
+    public float depth_bottom = -0.1f;
+
     public bool clear_items;
 
     private float left_edge = 0.47f;
@@ -62,7 +63,7 @@ public class FillVodoleySmall1Sside : MonoBehaviour
                 top_shelf_obj[i] = Instantiate(top_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 top_shelf_obj[i].transform.parent = this.gameObject.transform;
                 top_shelf_obj[i].transform.localEulerAngles = new Vector3(0, -107, -90);
-                top_shelf_obj[i].transform.localPosition = new Vector3(position_top_x, left_edge - center, (0.044f * position_top_x + 0.0479f) / 0.145f);
+                top_shelf_obj[i].transform.localPosition = new Vector3(depth_top, left_edge - center, (0.044f * depth_top + 0.0479f) / 0.145f);
             }
             center += step;
         }
@@ -82,7 +83,7 @@ public class FillVodoleySmall1Sside : MonoBehaviour
                 bottom_shelf_obj[i] = Instantiate(bottom_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 bottom_shelf_obj[i].transform.parent = this.gameObject.transform;
                 bottom_shelf_obj[i].transform.localEulerAngles = new Vector3(0, -107, -90);
-                bottom_shelf_obj[i].transform.localPosition = new Vector3(position_bottom_x, left_edge - center, (0.0978f * position_bottom_x - 0.0224f) / 0.3186f);
+                bottom_shelf_obj[i].transform.localPosition = new Vector3(depth_bottom, left_edge - center, (0.0978f * depth_bottom - 0.0224f) / 0.3186f);
             }
             center += step;
         }

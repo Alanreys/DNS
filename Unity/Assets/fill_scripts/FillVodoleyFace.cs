@@ -9,7 +9,7 @@ public class FillVodoleyFace : MonoBehaviour
     GameObject[] top_shelf_obj;
     public bool fill_top;
     [Range(-0.1f, 0.1f)]
-    public float position_top_x = 0;
+    public float depth_top = 0;
 
     public GameObject bottom_main_item;
     public bool create_bottom_array;
@@ -17,7 +17,8 @@ public class FillVodoleyFace : MonoBehaviour
     GameObject[] bottom_shelf_obj;
     public bool fill_bottom;
     [Range(-0.1f, 0.1f)]
-    public float position_bottom_x = 0;
+    public float depth_bottom = 0;
+
     public bool clear_items;
 
     float left_edge = 0.33f;
@@ -62,7 +63,7 @@ public class FillVodoleyFace : MonoBehaviour
                 top_shelf_obj[i] = Instantiate(top_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 top_shelf_obj[i].transform.parent = this.gameObject.transform;
                 top_shelf_obj[i].transform.localEulerAngles = new Vector3(0, 90, 90);
-                top_shelf_obj[i].transform.localPosition = new Vector3(position_top_x, left_edge - center, 0.275f);
+                top_shelf_obj[i].transform.localPosition = new Vector3(depth_top, left_edge - center, 0.275f);
             }
             center += step;
         }    
@@ -82,7 +83,7 @@ public class FillVodoleyFace : MonoBehaviour
                 bottom_shelf_obj[i] = Instantiate(bottom_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 bottom_shelf_obj[i].transform.parent = this.gameObject.transform;
                 bottom_shelf_obj[i].transform.localEulerAngles = new Vector3(0, 90, 90);
-                bottom_shelf_obj[i].transform.localPosition = new Vector3(position_bottom_x, left_edge - center, -0.16f);
+                bottom_shelf_obj[i].transform.localPosition = new Vector3(depth_bottom, left_edge - center, -0.16f);
             }
             center += step;
         }
