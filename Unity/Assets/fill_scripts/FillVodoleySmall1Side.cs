@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [ExecuteInEditMode]
-public class FillVodoleySmall1Sside : MonoBehaviour
+public class FillVodoleySmall1Side : MonoBehaviour
 {
     public GameObject top_main_item;
     public bool create_top_array;

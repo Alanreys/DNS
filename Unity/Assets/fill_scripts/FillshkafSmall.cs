@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [ExecuteInEditMode]
-public class shkaf_wireframe_right_left : MonoBehaviour
+public class FillshkafSmall : MonoBehaviour
 {
     public GameObject level0_main_item;
     public bool create_level0_array;
@@ -35,17 +35,9 @@ public class shkaf_wireframe_right_left : MonoBehaviour
     [Range(-0.05f, 0.10f)]
     public float depth_level3 = 0.03f;
 
-    public GameObject level4_main_item;
-    public bool create_level4_array;
-    public GameObject[] level4_shelf;
-    GameObject[] level4_shelf_obj;
-    public bool fill_level4;
-    [Range(-0.05f, 0.10f)]
-    public float depth_level4 = 0.03f;
-
     public bool clear_items;
     float left_edge = 0.53f;
-    float right_edge = -0.46f;
+    float right_edge = -0.47f;
 
     private void Update()
     {
@@ -65,10 +57,7 @@ public class shkaf_wireframe_right_left : MonoBehaviour
         {
             filling_level3();
         }
-        if (fill_level4)
-        {
-            filling_level4();
-        }
+
 
         if (create_level0_array)
         {
@@ -85,10 +74,6 @@ public class shkaf_wireframe_right_left : MonoBehaviour
         if (create_level3_array)
         {
             create_level3();
-        }
-        if (create_level4_array)
-        {
-            create_level4();
         }
 
         if (clear_items)
@@ -112,7 +97,7 @@ public class shkaf_wireframe_right_left : MonoBehaviour
                 level0_shelf_obj[i] = Instantiate(level0_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 level0_shelf_obj[i].transform.parent = this.gameObject.transform;
                 level0_shelf_obj[i].transform.localEulerAngles = new Vector3(90, 90, 90);
-                level0_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level0, -0.205f);
+                level0_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level0, -0.086f);
             }
             center += step;
         }
@@ -133,7 +118,7 @@ public class shkaf_wireframe_right_left : MonoBehaviour
                 level1_shelf_obj[i] = Instantiate(level1_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 level1_shelf_obj[i].transform.parent = this.gameObject.transform;
                 level1_shelf_obj[i].transform.localEulerAngles = new Vector3(90, 90, 90);
-                level1_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level1, 0.044f);
+                level1_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level1, 0.125f);
             }
             center += step;
         }
@@ -154,7 +139,7 @@ public class shkaf_wireframe_right_left : MonoBehaviour
                 level2_shelf_obj[i] = Instantiate(level2_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 level2_shelf_obj[i].transform.parent = this.gameObject.transform;
                 level2_shelf_obj[i].transform.localEulerAngles = new Vector3(90, 90, 90);
-                level2_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level2, 0.29f);
+                level2_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level2, 0.35f);
             }
             center += step;
         }
@@ -175,28 +160,7 @@ public class shkaf_wireframe_right_left : MonoBehaviour
                 level3_shelf_obj[i] = Instantiate(level3_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
                 level3_shelf_obj[i].transform.parent = this.gameObject.transform;
                 level3_shelf_obj[i].transform.localEulerAngles = new Vector3(90, 90, 90);
-                level3_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level3, 0.54f);
-            }
-            center += step;
-        }
-    }
-
-    private void filling_level4()
-    {
-        fill_level4 = false;
-        float width = left_edge - right_edge;
-        float step = width / (level0_shelf.Length + 1);
-        float center = step;
-
-        level4_shelf_obj = new GameObject[level4_shelf.Length];
-        for (int i = 0; i < level0_shelf.Length; i++)
-        {
-            if (level4_shelf[i] != null)
-            {
-                level4_shelf_obj[i] = Instantiate(level4_shelf[i], new Vector3(0, 0, 0), Quaternion.identity);
-                level4_shelf_obj[i].transform.parent = this.gameObject.transform;
-                level4_shelf_obj[i].transform.localEulerAngles = new Vector3(90, 90, 90);
-                level4_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level4, 0.79f);
+                level3_shelf_obj[i].transform.localPosition = new Vector3(left_edge - center, depth_level3, 0.57f);
             }
             center += step;
         }
@@ -238,19 +202,10 @@ public class shkaf_wireframe_right_left : MonoBehaviour
         }
     }
 
-    private void create_level4()
-    {
-        create_level4_array = false;
-        for (int i = 0; i < level4_shelf.Length; i++)
-        {
-            level4_shelf[i] = level4_main_item;
-        }
-    }
-
     private void clearing_items()
     {
         clear_items = false;
-        for (int i = this.transform.childCount - 1; i > 4; i--)
+        for (int i = this.transform.childCount - 1; i > 3; i--)
         {
             DestroyImmediate(transform.GetChild(i).gameObject);
         }
