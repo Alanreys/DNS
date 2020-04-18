@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class MeasureType2 : MonoBehaviour
+public class Measure2 : MonoBehaviour
 {
     public GameObject obj1;
     public GameObject obj2;

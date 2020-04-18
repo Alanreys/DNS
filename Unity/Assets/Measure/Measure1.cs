@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Measure : MonoBehaviour
+public class Measure1 : MonoBehaviour
 {
     [Header("Arrows")]
     public GameObject arrowL;
